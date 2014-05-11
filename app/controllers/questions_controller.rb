@@ -29,7 +29,11 @@ class QuestionsController < ApplicationController
 
     @longest_movie = Movie.order("").max.duration
 
-    @director_of_longest_movie = @longest_movie
+    @length_of_longest_movie = @longest_movie
+
+    the_longest_movie_director_id = Movie.order("duration ASC").last.director_id
+
+    @director_of_longest_movie = Director.find(the_longest_movie_director_id).name
 
 
   end
@@ -52,18 +56,6 @@ class QuestionsController < ApplicationController
 
 
 
-  # most_recent_movie = { :year => 0, :name => "" }
-
-  #   the_directors_movies.each do |the_director|
-  #     if the_movie.year.to_i > most_recent_movie[:year]
-  #       most_recent_movie = { :year => the_movie.year.to_i, :title => the_movie.title }
-  #     end
-  #   end
-
-  #   @most_recent_movie_for_second_actor = most_recent_movie[:title]
-
-
-    # @director_with_the_most_movies =
 
 
   end
