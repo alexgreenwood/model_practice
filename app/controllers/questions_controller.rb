@@ -29,13 +29,7 @@ class QuestionsController < ApplicationController
 
     @longest_movie = Movie.order("").max.duration
 
-
-
     @director_of_longest_movie = @longest_movie
-
-
-
-
 
 
   end
@@ -51,21 +45,22 @@ class QuestionsController < ApplicationController
     movie_counts.push(number_of_movies_directed_by_the_director)
     end
 
-    # @most_number_of_movies_by_a_single_director = movie_counts.max
+    @most_number_of_movies_by_a_single_director = movie_counts.sort
 
-    # @director_with_the_most_movies =  @most_number_of_movies_by_a_single_director
+    @director_with_the_most_movies =  @most_number_of_movies_by_a_single_director
 
 
 
- most_recent_movie = { :year => 0, :name => "" }
 
-    the_directors_movies.each do |the_director|
-      if the_movie.year.to_i > most_recent_movie[:year]
-        most_recent_movie = { :year => the_movie.year.to_i, :title => the_movie.title }
-      end
-    end
+  # most_recent_movie = { :year => 0, :name => "" }
 
-    @most_recent_movie_for_second_actor = most_recent_movie[:title]
+  #   the_directors_movies.each do |the_director|
+  #     if the_movie.year.to_i > most_recent_movie[:year]
+  #       most_recent_movie = { :year => the_movie.year.to_i, :title => the_movie.title }
+  #     end
+  #   end
+
+  #   @most_recent_movie_for_second_actor = most_recent_movie[:title]
 
 
     # @director_with_the_most_movies =
