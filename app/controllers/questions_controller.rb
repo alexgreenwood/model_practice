@@ -60,23 +60,34 @@ class QuestionsController < ApplicationController
     # Which actor has been in the most movies on the list?
     # (If there's a tie, any one of them is fine)
 
-    roles_count = []
+    # roles_count = []
 
-    Actor.all.each do |the_actor|
-    number_of_roles = the_actor.roles.count
+    # Actor.all.each do |the_actor|
+    # number_of_roles = the_actor.roles.count
 
-    roles_count.push(number_of_roles)
-    end
+    # roles_count.push(number_of_roles)
+    # end
 
-    the_most_movies_actor_id = Role.find(roles_count).sort.first.actor_id
+    # the_most_movies_actor_id = Role.find(roles_count).sort.first.actor_id
 
-    @actor_with_the_most_movies = Actor.find(the_most_movies_actor_id).name
+    # @actor_with_the_most_movies = Actor.find(the_most_movies_actor_id).name
 
 # @actor_with_the_most_movies = Role.find(roles_count).sort
 
 # @actor_with_the_most_movies = Role.find(roles_count)
 
+the_leader = Actor.new
+
+    Actor.all.each do |the_actor|
+      if the_actor.movies.count > the_leader.movies.count
+        the_leader = the_actor
+      end
+    end
+
+    @actor_with_the_most_movies = the_leader
   end
+
+
 
   def question_5
     # This one is hard. Work on it after all your other review is complete.
