@@ -49,16 +49,17 @@ class QuestionsController < ApplicationController
     movie_counts.push(number_of_movies_directed_by_the_director)
     end
 
-    @most_number_of_movies_by_a_single_director = movie_counts.sort
+    number_of_movies_by_each_director = movie_counts.sort
 
-    @director_with_the_most_movies =  @most_number_of_movies_by_a_single_director
+    the_most_movies_director_id = Director.find(number_of_movies_by_each_director).last
 
-
-
-
+    @director_with_the_most_movies = Director.find(the_most_movies_director_id).name
 
 
   end
+
+
+
 
   def question_4
     # Which actor has been in the most movies on the list?
