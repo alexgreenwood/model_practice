@@ -45,11 +45,10 @@ class QuestionsController < ApplicationController
     movie_counts.push(number_of_movies_directed_by_the_director)
     end
 
-    # number_of_movies_by_each_director = Movie.order("duration ASC").last.director_id
-
-    the_most_movies_director_id = Director.find(number_of_movies_directed_by_the_director).last.director_id
+    the_most_movies_director_id = Movie.find(movie_counts).sort.last.director_id
 
     @director_with_the_most_movies = Director.find(the_most_movies_director_id).name
+
 
 
   end
