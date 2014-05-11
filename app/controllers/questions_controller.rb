@@ -29,7 +29,6 @@ class QuestionsController < ApplicationController
 
     @longest_movie = Movie.order("").max.duration
 
-    @length_of_longest_movie = @longest_movie
 
     the_longest_movie_director_id = Movie.order("duration ASC").last.director_id
 
@@ -51,7 +50,7 @@ class QuestionsController < ApplicationController
 
     number_of_movies_by_each_director = movie_counts.sort
 
-    the_most_movies_director_id = Director.find(number_of_movies_by_each_director).last
+    the_most_movies_director_id = Director.find(number_of_movies_by_each_director).first
 
     @director_with_the_most_movies = Director.find(the_most_movies_director_id).name
 
