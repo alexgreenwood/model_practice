@@ -60,20 +60,22 @@ class QuestionsController < ApplicationController
     # Which actor has been in the most movies on the list?
     # (If there's a tie, any one of them is fine)
 
-  # movie_counts = []
+    roles_count = []
 
-  #   Actor.all.each do |the_actor|
-  #     number_of_movies_acted_in = the_actor.movies.count
+    Actor.all.each do |the_actor|
+    number_of_roles = the_actor.roles.count
 
-  #     # movie_counts.push(number_of_movies_directed_by_the_director)
+    roles_count.push(number_of_roles)
+    end
 
+    the_most_movies_actor_id = Role.find(roles_count).sort.first.actor_id
 
-  # #   # @most_number_of_movies_by_a_single_actor = movie_counts.max
+    @actor_with_the_most_movies = Actor.find(the_most_movies_actor_id).name
 
+# @actor_with_the_most_movies = Role.find(roles_count).sort
 
+# @actor_with_the_most_movies = Role.find(roles_count)
 
-
-  #   @actor_with_the_most_movies =
   end
 
   def question_5
